@@ -635,7 +635,7 @@ let filterBtnGrp = document.querySelector('#filterGrp')
 
 function byClickFilter(e){
     console.log(e.target.nodeName)
-    if(e.target.nodeName=='BUTTON'){
+    if(e.target.nodeName=='DIV'){
         if(e.target.id=="singerBtn"){
             document.querySelector('#singerSec').classList.toggle('showInput')
         }
