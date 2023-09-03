@@ -17,7 +17,7 @@ let songArr = [
         song : "Kesariya",
         path : "./songs/kesariya.mp3",
         Artist : "arijit singh",
-        Movie: "Brahmastra",
+        Movie: "brahmastra",
         Music:'pritam',
         image:'./imgs/kesariya.jpg'    
     },
@@ -26,7 +26,7 @@ let songArr = [
         song : "Aayat",
         path : "./songs/Aayat.mp3",
         Artist : "arijit singh",
-        Movie: "Bajirao Mastani",
+        Movie: "bajirao mastani",
         Music:'Sanjay Leela Bhansali',
         image:'./imgs/aayat.jpg'
     },
@@ -35,7 +35,7 @@ let songArr = [
         song : "Deva Deva",
         path : "./songs/deva deva.mp3",
         Artist : "arijit singh",
-        Movie: "Brahmastra",
+        Movie: "brahmastra",
         Music:'pritam',
         image:'./imgs/devadeva.jpg'
     },
@@ -193,7 +193,7 @@ document.body.appendChild(songList)
 let submitFilterBtn = document.querySelector("#submitFilter") 
 let filterSong =  document.querySelector('#filterSongList')
 
-let filterBlock = document.getElementById('filter')  
+let filterBtnGrp = document.querySelector('#filterGrp') 
 let filterMode = true  
 
 let res = []
@@ -225,12 +225,12 @@ let clearFilterBtn = document.querySelector("#clearFilter")
 
 function clearSongFilter(){
     
-    Array.from(filterBlock.getElementsByTagName('input')).map(e=> e.checked=false)
+    Array.from(filterBtnGrp.getElementsByTagName('input')).map(e=> e.checked=false)
     filterSong.style.display = "none";
     submitFilterBtn.style.display = "none";
     clearFilterBtn.style.display = "none";
     filterSong.innerHTML = '';
-    Array.from(filterBlock.children).map(e=> e.classList.remove('showInput'))
+    Array.from(filterBtnGrp.children).map(e=> e.classList.remove('showInput'))
     res = [];
     musicArr = []
     artistArr =[]
@@ -297,6 +297,7 @@ function matchSong(){
     // if(event.target.id=='INPUT'){
     //     console.log(event.target.nodeName)
         filterSong.innerHTML =''
+        filterSong.style.display = 'flex'
         
     if(artistArr.length>0){
             
@@ -333,12 +334,17 @@ function matchSong(){
             res = musicArr.filter((e)=> res.includes(e))
         }
        }
+
+       console.log("res")
+       console.log(res)
+
        listCreation()
        
  
 
        if(listMode){songList.style.display = "none"}
 
+       
 }
 submitFilterBtn.addEventListener('click',matchSong)
 
@@ -354,7 +360,7 @@ function showfilterButn(){
     if(artistArr.length || actorArr.length || movieArr.length || musicArr.length)  {
         submitFilterBtn.style.display = 'block'
         clearFilterBtn.style.display = 'block'
-        filterSong.style.display = 'flex'
+        // filterSong.style.display = 'flex'
 
     } 
     else {
@@ -368,7 +374,7 @@ function singerInput(e){
 
     console.log(e.target.nodeName)
      
-    if(e.target.nodeName=='INPUT' && e.target.checked){
+    if(e.target.nodeName==='INPUT' && e.target.checked){
 
         {
             songArr.map(
@@ -376,7 +382,7 @@ function singerInput(e){
                     
                 })
             }
-            
+            console.log("artist arr")
                 console.log(artistArr)
             }
     if(e.target.nodeName=='INPUT' && !e.target.checked){
@@ -397,7 +403,7 @@ function musicInput(e){
                     
                 })
             }
-           
+            console.log("music arr")
                 console.log(musicArr)
             }
     if(e.target.nodeName=='INPUT' && !e.target.checked){
@@ -419,7 +425,7 @@ function movieInput(e){
                     
                 })
             }
-           
+            console.log("moviearr")
                 console.log(movieArr)
             }
     if(e.target.nodeName=='INPUT' && !e.target.checked){
@@ -442,6 +448,7 @@ function actorInput(e){
                 })
             }
            
+                console.log("actor arr")
                 console.log(actorArr)
             }
     if(e.target.nodeName=='INPUT' && !e.target.checked){
@@ -456,6 +463,8 @@ showfilterButn()
 
 singerBtn.addEventListener('click',singerInput)
 musicBtn.addEventListener('click',musicInput)
+movieBtn.addEventListener('click',movieInput)
+actorBtn.addEventListener('click',actorInput)
 
 function listSongs(){ 
 
@@ -552,16 +561,29 @@ let notify = document.querySelector('#notification')
 
 function toggleBg(){
 
+ 
+
  if (toggleBtn.innerHTML=='<i class="ri-sun-fill ri-2x"></i>'){
     document.body.style.backgroundColor = 'Black'
 
     toggleBtn.innerHTML= '<i class="ri-moon-fill ri-2x"></i>' 
-    filterBlock.style.color ='white'
+   
+    filterBtnGrp.style.border ='2px solid white'
+
+    
 
     notify.innerHTML = 'Dark mode on'
     notify.style.border = '1px solid white'
     // notify.style.display = 'flex'
     notify.style.visibility = 'visible'
+
+    Array.from(filterBtnGrp.getElementsByTagName("label")).map(
+        e => 
+        {
+            e.style.border = "1px solid white"
+            e.style.color = 'white'
+            e.parentNode.style.border = '1px solid white'
+    })
 
     if(submitFilterBtn.style.display && clearFilterBtn.style.display =='block' || songList.style.display=='flex' ){
 
@@ -583,10 +605,19 @@ function toggleBg(){
     document.body.style.backgroundColor = 'White'
 
     toggleBtn.innerHTML= '<i class="ri-sun-fill ri-2x"></i>'
-    filterBlock.style.color ='black'
+
     notify.innerHTML = 'Light mode on'
     notify.style.border = '1px solid black'
     notify.style.visibility = 'visible'
+    filterBtnGrp.style.border ='2px solid black'
+
+    Array.from(filterBtnGrp.getElementsByTagName("label")).map(
+        e => { 
+               e.style.border = "1px solid black"
+               e.style.color ="black"
+               e.parentNode.style.border = '1px solid black'
+            }
+        )   
 
     if(submitFilterBtn.style.display && clearFilterBtn.style.display =='block' || songList.style.display=='flex'){
 
@@ -631,7 +662,7 @@ function searchPlay(){
 let filterBtn = document.querySelector("#filterBy")
 let classListName = document.querySelector('#filterGrp').classList
 
-let filterBtnGrp = document.querySelector('#filterGrp')
+
 
 function byClickFilter(e){
     console.log(e.target.nodeName)

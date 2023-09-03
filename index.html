@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,123 +8,124 @@
     <title>Music Player</title>
     <link rel="stylesheet" href="index.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-    
+
 </head>
+
 <body>
     <div id="notification">Light mode on</div>
-    <button class="btn" id ='mode'><i class="ri-sun-fill ri-2x"></i></button>
-    <button id ='songList'>Songs</button>
-    <button id ='addSong'>Add Song</button>
+    <button class="btn" id='mode'><i class="ri-sun-fill ri-2x"></i></button>
+    <button id='songList'>Songs</button>
+    <button id='addSong'>Add Song</button>
     <form class="hide" id="addSongForm">
         <h3>Add Song Details</h3>
 
-        Upload Song :<input type="file" id="inputPath" accept="audio/mp3,audio/*;capture=microphone"  required>
-        SongName :<input type="text" id="inputSong"  placeholder="Enter Song Name"  value='' required>
-        Music Director :<input type="text" id="inputMusic" placeholder="Enter Music director name"  value='' required>
-        Movie :<input type="text" id="inputMovie" placeholder="Enter movie name"  value='' required>
-        Upload image :<input type="file" id="inputImage" accept="image/*" value=''  required>
-        Actor :<input type="text" id="inputActor" placeholder="Actor" value=''  required>
-        Artist :<input type="text" id="inputArtist" placeholder="Actor" value=''  required>
+        Upload Song :<input type="file" id="inputPath" accept="audio/mp3,audio/*;capture=microphone" required>
+        SongName :<input type="text" id="inputSong" placeholder="Enter Song Name" value='' required>
+        Music Director :<input type="text" id="inputMusic" placeholder="Enter Music director name" value='' required>
+        Movie :<input type="text" id="inputMovie" placeholder="Enter movie name" value='' required>
+        Upload image :<input type="file" id="inputImage" accept="image/*" value='' required>
+        Actor :<input type="text" id="inputActor" placeholder="Actor" value='' required>
+        Artist :<input type="text" id="inputArtist" placeholder="Actor" value='' required>
         <div class="formBtn">
-        <input type="submit" value="submit" id ='addNewSong'>
-        <input type="submit" value="cancel" id ='clearform'>
+            <input type="submit" value="submit" id='addNewSong'>
+            <input type="submit" value="cancel" id='clearform'>
         </div>
     </form>
 
     <div id="filterBy" class="butn">
         Filter</div>
 
-        <div id="filterGrp" class="hide">
+    <div id="filterGrp" class="hide">
         <div id="singerBtn">
-            Singer      
+            Singer
+        </div>
+        <div class="hide" id="singerSec">
+            <label>Arijit Singh
+                <input type="checkbox" name="" id="arijit" value="arijit singh"></label>
+
+            <label for="armaan">Armaan Malik
+
+                <input type="checkbox" name="" id="armaan" value="armaan malik"></label>
+
+            <label for="jonita">Jonita Gandhi
+
+                <input type="checkbox" name="" id="jonita" value="jonita gandhi"></label>
+
+            <label for="sonu">Sonu Nigam
+
+                <input type="checkbox" name="" id="sonu" value="sonu nigam"></label>
         </div>
         <div id="musicDirBtn">
             Music
         </div>
+        <div class="hide" id="musicSec">
+            <label for="pritam">
+                Pritam
+                <input type="checkbox" name="" id="pritam" value="pritam"></label>
+
+        </div>
         <div id="movieBtn">
             Movie
-        </div >      
+        </div>
+        <div class="hide" id="movieSec">
+            <label for="brahmastra"> Brahmastra
+                <input type="checkbox" name="" id="brahmastra" value="brahmastra"></label>
+
+        </div>
         <div id="actorBtn">
             Actor
         </div>
-       </div>
-       <div id="filter">
-       <div class="hide" id="singerSec">
-        <label>Arijit Singh
-            <input type="checkbox" name="" id="arijit" value="arijit singh"></label><br>
-        <label for="armaan">Armaan Malik
-
-            <input type="checkbox" name="" id="armaan" value="armaan malik"></label><br>
-        
-        <label for="jonita">Jonita Gandhi
-
-            <input type="checkbox" name="" id="jonita" value="jonita gandhi"></label><br>
-        
-        
-        <label for="sonu">Sonu Nigam
-
-            <input type="checkbox" name="" id="sonu" value="sonu nigam"></label><br>
-        </div>
-
-        <div class="hide" id="musicSec">
-        <label for="pritam">
-            Pritam
-            <input type="checkbox" name="" id="pritam" value="pritam"></label> <br>
-        
-        </div>
-            <div class="hide" id="movieSec">
-                <label for="brahmastra"> Brahmastra
-                <input type="checkbox" name="" id="brahmastra" value="brahmastra"></label><br>
-               
-            </div>
-       
-            <div class="hide" id="actorSec">
-                <label for="ranbir">  Ranbir Kapoor
+        <div class="hide" id="actorSec">
+            <label for="ranbir"> Ranbir Kapoor
                 <input type="checkbox" name="" id="ranbir" value="ranbir"></label>
-            </div>
         </div>
-    
-    <div id="filterSongList">
-        
     </div>
-    <section class="filterArea">
-        <div id="submitFilter">Submit</div>
-        <div id="clearFilter">Clear</div>
-    </section>
-    <div id="container">
-        <div id="head">
-            <input type="search" style = "cursor:text;" value='' id="search" placeholder="Search song">
-            <div id="searchSugg"></div>
-            <h2 style="margin-bottom:3px; margin-top: 5px;">MusicPlayer</h2>
-            <p style="margin-top:3px;">Playing</p>
-        </div>
-        <div id="player">
-            <div id="img">
-            </div>
-            <div id="detail">
-                <span id="songName">song</span>
-                <span id="artist">artist</span>
-                <span id="movie">movie</span>
-                <span id="music">music</span>
-            </div>
-            <div class='slider' id="songSlider">
-                <span  class="timer">00:00</span>
-                <input type="range" min='1' max ='100' value='0' name="" id="song">
-                <span class="timer">00:00</span>
-
-            </div>
-            <div class='slider' id="volumeSlider">
-                <input type="range" min='1' max ='100' value='0' name="" id="volume">
-            </div>
-            <div id="button">
-                <button class="btn" id="prev"><i class="ri-skip-back-fill ri-2x"></i></button>
-                <button class="btn" id="play"><i id="play" class="ri-play-fill ri-2x"></i></button>
-                <button class="btn" id="nxt"><i class="ri-skip-forward-fill ri-2x"></i></button>
-
-            </div>
-        </div>
-
     </div>
-    <script src="index.js"></script>
+
+    <div id="filter">
+
+        <div id="filterSongList">
+
+        </div>
+        <section class="filterArea">
+            <div id="submitFilter">Submit</div>
+            <div id="clearFilter">Clear</div>
+        </section>
+        <div id="container">
+            <div id="head">
+                <input type="search" style="cursor:text;" value='' id="search" placeholder="Search song">
+                <div id="searchSugg"></div>
+                <h2 style="margin-bottom:3px; margin-top: 5px;">MusicPlayer</h2>
+                <p style="margin-top:3px;">Playing</p>
+            </div>
+            <div id="player">
+                <div id="img">
+                </div>
+                <div id="detail">
+                    <span id="songName">song</span>
+                    <span id="artist">artist</span>
+                    <span id="movie">movie</span>
+                    <span id="music">music</span>
+                </div>
+                <div class='slider' id="songSlider">
+                    <span class="timer">00:00</span>
+                    <input type="range" min='1' max='100' value='0' name="" id="song">
+                    <span class="timer">00:00</span>
+
+                </div>
+                <div class='slider' id="volumeSlider">
+                    <input type="range" min='1' max='100' value='0' name="" id="volume">
+                </div>
+                <div id="button">
+                    <button class="btn" id="prev"><i class="ri-skip-back-fill ri-2x"></i></button>
+                    <button class="btn" id="play"><i id="play" class="ri-play-fill ri-2x"></i></button>
+                    <button class="btn" id="nxt"><i class="ri-skip-forward-fill ri-2x"></i></button>
+
+                </div>
+            </div>
+
+        </div>
+        <script src="index.js"></script>
 </body>
+
 </html>

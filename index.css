@@ -79,10 +79,12 @@
 
     cursor:pointer;
     text-align: center;
-    border-radius: 9%;
+    border-radius: 2px;
     border: 1px solid black;
-    margin:1vmin;
+    margin-bottom:1vmin;
     background-color: #4AFF94;
+    font-size:1.2vmax;
+    width: 11vw;
 }
 .block{
     margin:4px;
@@ -91,7 +93,14 @@
     display: none;
     
 }
+#filterGrp label {
+    margin-bottom:1.3vh;
+}
 
+#filterGrp{
+    overflow-y: auto;
+    height: 55vh;
+}
 .form h3{
     margin-top: 0;
 }
@@ -149,10 +158,10 @@
     display:flex;
     flex-direction: column;
     padding: 2vw;
-    width: 5vw;
+    width: fit-content;
     height:fit-content;
     border:2px solid black;
-    border-radius: 3%;
+    border-radius: 5px;
 }
 label{
     display:flex;
@@ -165,13 +174,10 @@ label{
     position: relative;
     display:flex;
     flex-direction: column;
-    padding: 2vw;
+    padding: 1vw;
     width: 9vw;
-    margin-left:9vw;
-    justify-content: right;
-    border:2px solid #000;
-    border-radius: 3%;
-    line-height: 2vw;
+    border:1px solid #000;
+    border-radius: 3px;
     margin-bottom:1vh;
 
 }
@@ -212,7 +218,6 @@ input[type='range']{
 #filterBy{
     display:flex;
     flex-direction:column;
-
 
 }
 .songFilter,.musicFilter,.movieFilter{
@@ -301,22 +306,24 @@ input[type='range']::-webkit-slider-thumb{
     
 }
 #filterSongList{
-    display:none;
+    display: none;
+    padding: 1.4vw;
     border-radius: 5px;
     flex-direction: column;
     background-color: #4AFF94;
-    width: 150px;
-    margin-left: 5px;
+    width: fit-content;
+    margin-left: 1vw;
     border: 2px solid black;
     height: fit-content;
 }
+
 #filterSongList button{
     border: 1px solid rgb(137, 23, 23);
     border-radius: 5px;
-    width: fit-content+1px;
+    width: 12vw;
+    font-size: 1.3vw;
     list-style-type: none;
     margin: 3px;
-    width: 120px;
     text-align: left;
     cursor: pointer;
 }
