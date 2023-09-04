@@ -329,9 +329,12 @@ input[type='range']::-webkit-slider-thumb{
 }
 .butn{
     
-    cursor:pointer;
+    font-size: 1.4vw;
+    margin: 1.3vh;
+    cursor: pointer;
+    padding: 0.2vh 1.5vh;
     text-align: center;
-    border-radius: 9%;
+    border-radius: 3px;
     border: 1px solid black;
     width: 5vw;
     background-color: #4AFF94;

@@ -19,7 +19,8 @@ let songArr = [
         Artist : "arijit singh",
         Movie: "brahmastra",
         Music:'pritam',
-        image:'./imgs/kesariya.jpg'    
+        image:'./imgs/kesariya.jpg',
+        Actor:"ranbir"    
     },
     {   
         id   : 1,
@@ -37,7 +38,8 @@ let songArr = [
         Artist : "arijit singh",
         Movie: "brahmastra",
         Music:'pritam',
-        image:'./imgs/devadeva.jpg'
+        image:'./imgs/devadeva.jpg',
+        Actor:"ranbir"
     },
     {
         id   : 3,
