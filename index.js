@@ -522,6 +522,24 @@ function changeBg(){
     cont.style.backgroundColor = color
 }
 
+//playlist creation function
+function playlistCreation(){
+    let playlistForm = document.querySelector('#playlistForm')
+
+    playlistForm.classList.toggle('playlistBtn')
+
+    document.querySelector('#main').classList.toggle('allBlur')
+    document.querySelector('#container').classList.toggle('allBlur')
+    
+
+    
+
+    console.log('playlist btn clicked')
+}
+
+
+
+
 function nextSong(){
 
     play = false

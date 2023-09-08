@@ -12,10 +12,20 @@
 </head>
 
 <body>
+
+    <div id="main">
+    <nav id="navbar">
+        <span id ='logo'>DemoMusic</span>
+        <!-- <i class="ri-account-box-line" id="myacc"></i> -->
+        <i class="ri-account-circle-line ri-2x" id="myacc"></i>
+    </nav>
     <div id="notification">Light mode on</div>
     <button class="btn" id='mode'><i class="ri-sun-fill ri-2x"></i></button>
     <button id='songList'>Songs</button>
     <button id='addSong'>Add Song</button>
+    <button id="createPlaylist" onclick="playlistCreation()">Create Playlist</button>
+
+
     <form class="hide" id="addSongForm">
         <h3>Add Song Details</h3>
 
@@ -125,6 +135,15 @@
             </div>
 
         </div>
+        </div>
+    </div>
+    <form class="hide" id="playlistForm">
+        <h3>Create Playlist</h3>
+    
+        Playlist name : <input type="text" placeholder="Enter name of your playlist" required>
+        <button>Add songs</button>
+        <button type="submit">Create</button>
+    </form>
         <script src="index.js"></script>
 </body>
 
