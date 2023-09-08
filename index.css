@@ -327,6 +327,16 @@ input[type='range']::-webkit-slider-thumb{
     text-align: left;
     cursor: pointer;
 }
+
+#navbar{
+    
+    display: flex;
+    justify-content: space-between;
+    padding: 0.7vh;
+    border-bottom: 2px solid black;
+    background-color: #4AFF94;
+
+}
 .butn{
     
     font-size: 1.4vw;
