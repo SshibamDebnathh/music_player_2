@@ -1,3 +1,7 @@
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,6 +23,14 @@
     <button class="btn" id='mode'><i class="ri-sun-fill ri-2x"></i></button>
     <button id='songList'>Songs</button>
     <button id='addSong'>Add Song</button>
+    <button id='createPlaylist'>Create Playlist</button>
+    <form class="hide" id="addSongsPlaylist">
+        <h3>Create new Playlist</h3>
+        Playlist name : <input type="text" id="playlistName" placeholder="Enter Playlist Name" value="" required>
+        Added Songs :<ul id="selectedSongsList">
+        </ul>
+        Add Songs :
+    </form>
     <form class="hide" id="addSongForm">
         <h3>Add Song Details</h3>
 

@@ -1,3 +1,5 @@
+
+
 let currSong = document.createElement("audio")
 
 let searchAudio = document.querySelector('#search')
@@ -218,10 +220,7 @@ else{
     filterSong.textContent ="No record found"
 }
     // filterMode = false
-    
-    
     res =[]
-    
 }
 let clearFilterBtn = document.querySelector("#clearFilter")
 
@@ -771,3 +770,89 @@ function updateData(){
 }
 
 loadAudio(index);
+
+const allPlaylists = [];
+
+function createPlayist(){
+    console.log("called");
+    document.querySelector("#addSongsPlaylist").classList.toggle('form');
+    const form = document.getElementById("addSongsPlaylist");
+    let songsList = document.createElement('ul');
+    form.appendChild(songsList);
+    songsList.setAttribute('id','songsToAdd');
+    songsList.style.paddingLeft = 0;
+    allSongs = songArr;
+    allSongs.map(e => {
+        list = document.createElement('li');
+        songName = document.createElement('button');
+        songName.setAttribute('id',e.id);
+        songName.innerText = e.song;
+        list.appendChild(songName);
+        songsList.appendChild(list);
+        
+    })    
+    songsList.style.listStyleType = 'none';
+
+    selectedSongsList = [];
+
+    songsList.addEventListener("click", function(event) {
+        if (event.target.tagName === "BUTTON") {
+            event.preventDefault();
+            const buttonId = event.target.id;
+            const buttonText = event.target.innerText;
+            
+            // Check if the buttonId is already in the selectedSongsList
+            if (!selectedSongsList.includes(buttonId)) {
+                selectedSongsList.push(buttonId);
+                
+                const addToList = document.getElementById("selectedSongsList");
+                addToList.style.listStyleType = 'none';
+                addToList.style.paddingLeft = 0;
+                const listItem = document.createElement('li');
+                const songName = document.createElement('button');
+                
+                songName.setAttribute('id', buttonId);
+                songName.innerText = buttonText;
+                
+                listItem.appendChild(songName);
+                addToList.appendChild(listItem);
+            }
+            else{
+                alert("Already added!")
+            }
+        }
+    });  
+    const submitBtn = document.createElement('button');
+    submitBtn.innerText = "Create"
+    form.appendChild(submitBtn);
+
+    submitBtn.addEventListener('click', function(event){
+        event.preventDefault();
+        const name = document.getElementById("playlistName").value;
+        console.log(name);
+        if(name == ''){
+            alert("Please enter a name");
+        }
+        if(selectedSongsList.length === 0){
+            alert("Select few songs")
+        }
+        else{
+            const playlist = {
+                name : name,
+                listOfSongs : selectedSongsList
+            }
+            allPlaylists.push(playlist);
+            document.getElementById("playlistName").value = '';
+            document.getElementById("selectedSongsList").innerHTML = '';
+            selectedSongsList = [];
+            alert("Playlist created");
+        }
+        
+    })
+    console.log(allPlaylists);
+}
+
+
+
+const createPlaylistBtn = document.getElementById("createPlaylist");
+createPlaylistBtn.addEventListener('click', createPlayist);
