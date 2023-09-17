@@ -530,11 +530,7 @@ function playlistCreation(){
 
     document.querySelector('#main').classList.toggle('allBlur')
     document.querySelector('#container').classList.toggle('allBlur')
-    
-
-    
-
-    console.log('playlist btn clicked')
+   
 }
 
 
