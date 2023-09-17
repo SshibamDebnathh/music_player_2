@@ -21,8 +21,8 @@
     <div id="notification">Light mode on</div>
     <button class="btn" id='mode'><i class="ri-sun-fill ri-2x"></i></button>
     <button id='songList'>Songs</button>
-    <button id='addSong'>Add Song</button>
-    <button id="createPlaylist" onclick="playlistCreation()">Create Playlist</button>
+    <button id='addSong' >Add Song</button>
+    <button id="createPlaylist" onclick="playlistCreation()">Create playlist</button>
 
 
     <form class="hide" id="addSongForm">
@@ -139,8 +139,8 @@
     <form class="hide" id="playlistForm">
         <h3>Create Playlist</h3>
     
-        Playlist name : <input type="text" placeholder="Enter name of your playlist" required>
-        <button>Add songs</button>
+        Playlist name : <input type="text" onchange="addSongToPlaylist()" id='playlistName' placeholder="Enter name of your playlist" required>
+        <button onclick="showSonglist()">Add songs</button>
         <button type="submit">Create</button>
     </form>
         <script src="index.js"></script>

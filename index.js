@@ -133,7 +133,9 @@ let updateTime
 let songList = document.createElement('ul')
     document.body.appendChild(songList)
     songList.setAttribute('id','songs')
-let songName
+
+// let songName    
+let songDiv
 
 function updateAllArrays(id){
 
@@ -147,13 +149,57 @@ function createList(){
 
     songArr.map(e => {
         
-        songName = document.createElement('button')
+        // songName = document.createElement('DIV')
+        // songName.classList.add('viewSongList')
+        songDiv = document.createElement('DIV')
+        songDiv.classList.add('viewSongList')
+
+       let  songName = document.createElement('BUTTON')
+       let   options = document.createElement("DIV")
+       options.setAttribute('id',e.song) 
+       
+
+         options.innerHTML = "<i class='ri-more-2-line'></i>"
+         let val = document.createElement('ul')
+         val.innerHTML= "<li>Add to pLaylist</li><li>Delete</li><li>Edit</li>"
+         val.classList.add('hide')
+         options.append(val)
+
+
+
+         options.addEventListener("click",()=>{
+            options.firstElementChild.classList.toggle('hide')
+            val.classList.toggle('hide')
+         })
+
+    
+    //    let options = document.createElement('ul')
+    //        options.setAttribute('id',e.song)
+    //        options.innerHTML = "<i class='ri-more-2-line' id = 'dots'></i>"
+    //        let val = document.createElement('div')
+    //        val.classList.add('hide')
+           
+    //        val.innerHTML = "<li>Add to pLaylist</li><li>Delete</li><li>Edit</li>"
+    //        val.setAttribute('id','optionBtn')
+
+    //        val.style.listStyleType = 'none'
+    //        options.append(val)
+    //        options.addEventListener('click',(e)=>{
+
+    //         console.log(e.target.id)
+    //         document.getElementById(e.target.id).firstElementChild.classList.toggle('hide')
+    //         val.classList.toggle('hide')
+
+        // })
         
         songName.setAttribute('id',e.id)
         songName.innerText = e.song
 
+        songDiv.append(songName)
+        songDiv.append(options)
+
         
-        songList.appendChild(songName)
+        songList.appendChild(songDiv)
         
     })
 }
@@ -206,7 +252,7 @@ function listCreation() {
      res.map(e=> {
          if(filterMode) {
              
-             let filteredSong = document.createElement('button')
+             let filteredSong = document.createElement('DIV')
              filteredSong.innerHTML = e.song
              filteredSong.setAttribute('id',e.id)
              filterSong.appendChild(filteredSong)
@@ -523,14 +569,57 @@ function changeBg(){
 }
 
 //playlist creation function
-function playlistCreation(){
-    let playlistForm = document.querySelector('#playlistForm')
 
-    playlistForm.classList.toggle('playlistBtn')
+let playlistForm
+
+function playlistCreation(){
+   playlistForm = document.querySelector('#playlistForm')
+
+    playlistForm.classList.toggle('playlistFormClass')
 
     document.querySelector('#main').classList.toggle('allBlur')
     document.querySelector('#container').classList.toggle('allBlur')
    
+}
+
+
+
+// function showSonglist(){
+//     songArr.map((e)=> {
+//         let songListforPlaylistform = document.createElement('ul')
+//         let liSong = document.createElement("li")
+//         let addSong = document.createElement("button")
+//         addSong.innerText = "add"
+//         addSong.addEventListener('click',addSongToPlaylist(liSong.id))
+//         liSong.setAttribute('id',e.id)
+//         liSong.innerText = e.song
+//         playlist.appendChild(song)
+//         playlist.appendChild(addSong)
+//         playlistForm.after(playlist)
+//     })
+
+    
+// }
+
+//create an object for containing all playlists name it "playlists" each playlist will be stored as key:value pairs with its "Input name" given by the user as its "key" and "value" will the "array of songs" selected by the user,  each playlist will be an array which will contain lisongs with id attribute so that later can be used to play them through their id
+
+
+
+function showSonglist(){
+    
+
+}
+
+
+function addSongToPlaylist(song){
+
+    let inputVal = document.querySelector('#playlistName').value
+
+    
+
+
+
+
 }
 
 

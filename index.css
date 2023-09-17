@@ -271,19 +271,28 @@ input[type='range']::-webkit-slider-thumb{
     margin-left: 5px;
     border: 2px solid black;
     display: none;
+    padding: 2vw;
+    gap: 1vh;
+    height: 59vh;
+    overflow-y: auto;
+
 }
 
-#songs button{
+.viewSongList {
     border: 1px solid rgb(137, 23, 23);
     border-radius: 5px;
-    width: fit-content+1px;
+    width: 17vw;
+    padding: 0.7vh;
+    background-color: darkgray;
     list-style-type: none;
     margin: 3px;
     position: relative;
-    left: -31px;
+    display: flex;
+    justify-content: space-between;
     text-align: left;
     cursor: pointer;
 }
+
 .slider{
     display:flex;
     margin-left:5px;
@@ -317,12 +326,13 @@ input[type='range']::-webkit-slider-thumb{
     height: fit-content;
 }
 
-#filterSongList button{
+#filterSongList div{
     border: 1px solid rgb(137, 23, 23);
     border-radius: 5px;
     width: 12vw;
     font-size: 1.3vw;
     list-style-type: none;
+    background-color: rgb(199, 194, 194);
     margin: 3px;
     text-align: left;
     cursor: pointer;
@@ -346,7 +356,7 @@ input[type='range']::-webkit-slider-thumb{
     padding:.5vh;
 }
 
-.playlistBtn{
+.playlistFormClass{
     background-color: #63f8a5;
     position: absolute;
     top: 30%;
@@ -354,13 +364,13 @@ input[type='range']::-webkit-slider-thumb{
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    padding: 1vh;
+    padding: 5vh;
     width: fit-content;
     border: 2px solid grey;
     border-radius: 3px;
-    align-content: space-between;
     height: 31vh;
-    z-index: 3;
+    gap:1vh;
+   
 }
 .allBlur{
     filter:blur(7px);
