@@ -136,11 +136,11 @@
         </div>
         </div>
     </div>
-    <form class="hide" id="playlistForm">
+    <form class="hide" id="playlistForm" >
         <h3>Create Playlist</h3>
     
-        Playlist name : <input type="text" onchange="addSongToPlaylist()" id='playlistName' placeholder="Enter name of your playlist" required>
-        <button onclick="showSonglist()">Add songs</button>
+        Playlist name : <input type="text" oninput="addSongToPlaylist()" id='playlistName' placeholder="Enter name of your playlist" required>
+        <button onclick="showSonglist()" type="button" disabled>Add songs</button>
         <button type="submit">Create</button>
     </form>
         <script src="index.js"></script>

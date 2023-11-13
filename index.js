@@ -128,6 +128,7 @@ let songIndex = document.querySelector('#head').lastElementChild
 
 let songsBtn = document.querySelector('#songList')
 let listMode = false;
+let playlistObj = {}
 let updateTime
  
 let songList = document.createElement('ul')
@@ -147,6 +148,8 @@ function updateAllArrays(id){
 }
 function createList(){
 
+
+
     songArr.map(e => {
         
         // songName = document.createElement('DIV')
@@ -156,20 +159,54 @@ function createList(){
 
        let  songName = document.createElement('BUTTON')
        let   options = document.createElement("DIV")
-       options.setAttribute('id',e.song) 
+    //    options.setAttribute('id',e.song) 
        
 
          options.innerHTML = "<i class='ri-more-2-line'></i>"
          let val = document.createElement('ul')
+         val.style.listStyleType = 'none'
+         val.setAttribute("id",e.song)
+        
          val.innerHTML= "<li>Add to pLaylist</li><li>Delete</li><li>Edit</li>"
+         val.classList.add('val-css')
          val.classList.add('hide')
-         options.append(val)
+         songList.appendChild(val)
+         let playlistObjdiv = document.createElement('ul')
 
+         val.firstElementChild.addEventListener('click',(e)=>{
+             
+             let playlistName = prompt('Create name of your playlist')
+             let eId = e.target.parentNode.id
+             let playlist =  songArr.filter(s=> s.song == eId)
+             
+             playlistObj[playlistName] = []
+             playlist.map(p=> playlistObj[playlistName].push(p))
+             console.log(playlistObj)
 
+             let objArr = Object.keys(playlistObj)
+             console.log(objArr)
+             objArr.map(li => {
+ 
+                 console.log(li)
+ 
+                 let btn = document.createElement('BUTTON')
+                 btn.innerText = li
+                 playlistObjdiv.appendChild(btn)
+             })
+             document.body.appendChild(playlistObjdiv)
+             
+            })
+            
+            
+            
+            options.addEventListener("click",(e)=>{
+                
+            console.log(e.clientX,e.clientY)
 
-         options.addEventListener("click",()=>{
-            options.firstElementChild.classList.toggle('hide')
+            // options.firstElementChild.classList.toggle('hide')
             val.classList.toggle('hide')
+            val.style.top = e.clientY+"px"
+            val.style.left = `${e.clientX+9}px`
          })
 
     
@@ -221,6 +258,8 @@ if(event.target.nodeName==='BUTTON'){
 }
 
 
+
+
 songList.addEventListener('click',myFunc)
 
 function playSong(){
@@ -236,7 +275,7 @@ function pauseSong(){
     play= false
 }
 
-document.body.appendChild(songList)
+// document.body.appendChild(songList)
 
 let submitFilterBtn = document.querySelector("#submitFilter") 
 let filterSong =  document.querySelector('#filterSongList')
@@ -252,7 +291,7 @@ function listCreation() {
      res.map(e=> {
          if(filterMode) {
              
-             let filteredSong = document.createElement('DIV')
+             let filteredSong = document.createElement('BUTTON')
              filteredSong.innerHTML = e.song
              filteredSong.setAttribute('id',e.id)
              filterSong.appendChild(filteredSong)
@@ -390,7 +429,7 @@ function matchSong(){
        
  
 
-       if(listMode){songList.style.display = "none"}
+    //    if(listMode){songList.style.display = "none"}
 
        
 }
@@ -584,42 +623,51 @@ function playlistCreation(){
 
 
 
-// function showSonglist(){
-//     songArr.map((e)=> {
-//         let songListforPlaylistform = document.createElement('ul')
-//         let liSong = document.createElement("li")
-//         let addSong = document.createElement("button")
-//         addSong.innerText = "add"
-//         addSong.addEventListener('click',addSongToPlaylist(liSong.id))
-//         liSong.setAttribute('id',e.id)
-//         liSong.innerText = e.song
-//         playlist.appendChild(song)
-//         playlist.appendChild(addSong)
-//         playlistForm.after(playlist)
-//     })
-
+function showSonglist(){
+    let songListforPlaylistform = document.createElement('ul')
+        songListforPlaylistform.style.listStyleType ='none'
+        console.log(songListforPlaylistform.children)
     
-// }
+    songArr.map((e)=> {
+        let liSong = document.createElement("li")
+        liSong.setAttribute('id',e.id)
+        liSong.innerText = e.song
+        liSong.classList.add('playlistUl')
+        
+        let addSong = document.createElement("button")
+        addSong.innerText = "add"
+        addSong.addEventListener('click',createPlaylist(this.parentNode.id))
+        liSong.appendChild(addSong)
+        songListforPlaylistform.appendChild(liSong)
+        playlistForm.after(songListforPlaylistform)
+    })
+    
+    
+}
 
 //create an object for containing all playlists name it "playlists" each playlist will be stored as key:value pairs with its "Input name" given by the user as its "key" and "value" will the "array of songs" selected by the user,  each playlist will be an array which will contain lisongs with id attribute so that later can be used to play them through their id
 
+function createPlaylist(id){
 
-
-function showSonglist(){
     
-
 }
 
 
-function addSongToPlaylist(song){
 
-    let inputVal = document.querySelector('#playlistName').value
 
+function addSongToPlaylist(){
+
+
+    let plName = document.querySelector('#playlistName')
     
-
-
-
-
+    if(plName.value){
+        plName.nextElementSibling.disabled = false
+    }
+    else{
+        plName.nextElementSibling.disabled = true
+    }
+    
+    
 }
 
 
@@ -805,6 +853,8 @@ filterBtn.addEventListener('click',filteration)
 function searchSong(){
     
    result = songArr.findIndex(e => searchAudio.value == e.song)
+
+// result = songArr.findIndex(e => e.song.includes(searchAudio.value)) *this is better but has some bugs
    
    if(result>=0) {
        
