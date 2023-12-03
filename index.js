@@ -214,7 +214,7 @@ function createList(){
     //        options.setAttribute('id',e.song)
     //        options.innerHTML = "<i class='ri-more-2-line' id = 'dots'></i>"
     //        let val = document.createElement('div')
-    //        val.classList.add('hide')
+        //    val.classList.add('hide')
            
     //        val.innerHTML = "<li>Add to pLaylist</li><li>Delete</li><li>Edit</li>"
     //        val.setAttribute('id','optionBtn')
@@ -611,6 +611,9 @@ function changeBg(){
 
 let playlistForm
 
+
+
+
 function playlistCreation(){
    playlistForm = document.querySelector('#playlistForm')
 
@@ -618,14 +621,23 @@ function playlistCreation(){
 
     document.querySelector('#main').classList.toggle('allBlur')
     document.querySelector('#container').classList.toggle('allBlur')
+
+    showSonglist()
+    
    
 }
+
+let idArr = [] // array for holding playlist ids
+
+
+
 
 
 
 function showSonglist(){
     let songListforPlaylistform = document.createElement('ul')
         songListforPlaylistform.style.listStyleType ='none'
+        songListforPlaylistform.setAttribute("id",'listOfAllSongs')
         console.log(songListforPlaylistform.children)
     
     songArr.map((e)=> {
@@ -636,29 +648,58 @@ function showSonglist(){
         
         let addSong = document.createElement("button")
         addSong.innerText = "add"
-        addSong.addEventListener('click',createPlaylist(this.parentNode.id))
         liSong.appendChild(addSong)
+        addSong.addEventListener('click',(e)=>{
+            
+            idArr.push(Number(e.target.parentNode.id))
+            
+            console.log(idArr)
+            
+        })
         songListforPlaylistform.appendChild(liSong)
+        
         playlistForm.after(songListforPlaylistform)
+
     })
+
+   
     
     
 }
 
 //create an object for containing all playlists name it "playlists" each playlist will be stored as key:value pairs with its "Input name" given by the user as its "key" and "value" will the "array of songs" selected by the user,  each playlist will be an array which will contain lisongs with id attribute so that later can be used to play them through their id
+let plName
 
-function createPlaylist(id){
+let addIdsToPlaylistObj = document.querySelector('#pushlist')
+
+addIdsToPlaylistObj.addEventListener('click',createPlaylist)
+function createPlaylist(e){
+// console.log(plName.value,id)
+
+e.preventDefault()
+// playlistObj[plName.value] = []
+if(idArr.length>0){
+    // idArr.map((e)=>playlistObj[plName.value].push(e))
+
+    playlistObj[plName.value] = idArr
+    localStorage.setItem("playlist" , JSON.stringify(playlistObj))
+
+    // console.log(idArr)
+}
+
+console.log(playlistObj)
+
+idArr = []
 
     
 }
-
 
 
 
 function addSongToPlaylist(){
 
 
-    let plName = document.querySelector('#playlistName')
+    plName = document.querySelector('#playlistName')
     
     if(plName.value){
         plName.nextElementSibling.disabled = false
